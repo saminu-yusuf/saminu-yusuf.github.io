@@ -139,6 +139,60 @@ footer {
   font-size: 0.9rem;
   margin-top: 50px;
 }
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  /* Small screens (phones) */
+  header h1 {
+    font-size: 1.5rem;
+  }
+  nav li {
+    margin: 0 10px;
+  }
+  section {
+    padding: 30px 10px;
+  }
+  .project {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  #about img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 992px) {
+  /* Medium screens (tablets) */
+  header h1 {
+    font-size: 1.8rem;
+  }
+  nav li {
+    margin: 0 15px;
+  }
+  section {
+    padding: 40px 15px;
+  }
+  .project {
+    width: 45%;
+  }
+}
+
+@media (min-width: 993px) {
+  /* Large screens (desktops) */
+  header h1 {
+    font-size: 2.5rem;
+  }
+  nav li {
+    margin: 0 20px;
+  }
+  section {
+    padding: 50px 40px;
+  }
+  .project {
+    width: 30%;
+  }
+}
 </style>
 </head>
 <body>
@@ -188,4 +242,3 @@ footer {
   </script>
 </body>
 </html>
-k
