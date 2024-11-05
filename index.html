@@ -3,195 +3,57 @@
 <head>
 <title>My Portfolio</title>
 <style>
-/* Basic reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Basic styles */
 body {
   font-family: Arial, sans-serif;
-  color: #333;
-  background-color: #f8f9fa;
-  line-height: 1.6;
-}
-
-/* Header styling */
-header {
-  background-color: #004080;
-  color: #fff;
-  padding: 20px 0;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
-header h1 {
-  font-size: 2rem;
-  font-weight: bold;
+header {
+  background-color: #f0f0f0;
+  padding: 20px;
 }
 
 nav ul {
   list-style: none;
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
+  margin: 0;
+  padding: 0;
 }
 
 nav li {
-  margin: 0 20px;
+  display: inline-block;
+  margin-right: 100px;
+  margin-left: 100px;
 }
 
 nav a {
-  color: #fff;
   text-decoration: none;
-  font-weight: bold;
+  color: olive;
 }
 
-nav a:hover {
-  color: #ffd700;
-}
-
-/* Section styling */
 section {
-  padding: 50px 20px;
-  text-align: center;
+  padding: 40px;
 }
 
-section h2 {
-  font-size: 1.8rem;
-  color: #004080;
-  margin-bottom: 20px;
-}
-
-#about img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin-top: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Project container styling */
 .project-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  justify-content: space-between;
 }
 
 .project {
   width: 300px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
   padding: 20px;
-  text-align: left;
-  transition: transform 0.3s ease;
 }
 
-.project:hover {
-  transform: scale(1.05);
-}
-
-.project h3 {
-  color: #004080;
-  margin-bottom: 10px;
-}
-
-.project a {
-  display: inline-block;
-  padding: 10px;
-  background-color: #ff6f61;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  text-align: center;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.project a:hover {
-  background-color: #ff856d;
-}
-
-/* Contact section styling */
-#contact p {
-  font-size: 1rem;
-  margin: 10px 0;
-}
-
-#contact a {
-  color: #004080;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-#contact a:hover {
-  color: #ff6f61;
-}
-
-/* Footer styling */
 footer {
-  background-color: #004080;
-  color: #fff;
   text-align: center;
-  padding: 20px;
-  font-size: 0.9rem;
-  margin-top: 50px;
-}
-
-/* Responsive Styles */
-@media (max-width: 600px) {
-  /* Small screens (phones) */
-  header h1 {
-    font-size: 1.5rem;
-  }
-  nav li {
-    margin: 0 10px;
-  }
-  section {
-    padding: 30px 10px;
-  }
-  .project {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  #about img {
-    width: 100px;
-    height: 100px;
-  }
-}
-
-@media (min-width: 601px) and (max-width: 992px) {
-  /* Medium screens (tablets) */
-  header h1 {
-    font-size: 1.8rem;
-  }
-  nav li {
-    margin: 0 15px;
-  }
-  section {
-    padding: 40px 15px;
-  }
-  .project {
-    width: 45%;
-  }
-}
-
-@media (min-width: 993px) {
-  /* Large screens (desktops) */
-  header h1 {
-    font-size: 2.5rem;
-  }
-  nav li {
-    margin: 0 20px;
-  }
-  section {
-    padding: 50px 40px;
-  }
-  .project {
-    width: 30%;
-  }
+  padding: 10px;
+  background-color: #f0f0f0;
 }
 </style>
 </head>
@@ -206,39 +68,42 @@ footer {
       </ul>
     </nav>
   </header>
-
   <section id="about">
     <h2>About Me</h2>
     <p>I am a skilled web developer with a strong foundation in PHP and MySQL. I have experience in building various applications, including a report card generator, a food delivery app roadmap, and a nearby toilet app. I am also proficient in product management and user research.</p>
-    <img src="images/devimage.jpg" alt="Your Profile Picture">
+    <img src="images/devimage.jpg" style="width: 50px" alt="Your Profile Picture">
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
     <div class="project-container">
       <div class="project">
-        <h3>Project 1: Report Card Generator</h3>
+        <h3>Project 1: Report Cards Generator</h3>
         <p>Developed a web application using PHP and MySQL to generate personalized report cards for students. This project showcased my skills in data manipulation, database management, and web development.</p>
-        <a href="https://reports-cards-generator-staging.b12sites.com/index#home" onclick="myFunction()">View Project</a>
+        <a href="https://reports-cards-generator-staging.b12sites.com/index#home" style='background-color:pink;color:white;width: 100%;' onclick="myFunction()">View Project</a>
+      </div>
+      
+      <div class="project">
+        <h3>Project 2: Food Delivery App</h3>
+        <p>As the product manager, I contributed to the planning and ideation phases. I worked closely with the design, development, and testing teams to create a user-friendly app prototype. Key contributions included defining the project scope, gathering user feedback, and collaborating with the team to prioritize features and improve user experience.</p>
       </div>
     </div>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:saminuyusufgarba266@gmail.com">saminuyusufgarba266@gmail.com</a></p>
-    <p>Phone: <a href="tel:+2348161296826">+2348161296826</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/feed/">LinkedIn Profile</a></p>
+    <p>Email: saminuyusufgarba266@gmail.com</p>
+    <p>Phone: <a href="tel:+2348161296826" style='background-color:silver;color:white;width: 100px;text-decoration:none'>+2348161296826</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/feed/" style='background-color:silver;color:white;width: 100px;text-decoration:none'>LinkedIn</a></p>
   </section>
 
-  <footer>
+  <footer style='margin-top: 50px;'>
     <p>&copy; 2024 Saminu Yusuf</p>
   </footer>
-
   <script>
-  function myFunction() {
-    alert("The project is stored and will be hosted soon!");
-  }
+    function myFunction() {
+      alert("Sorry, it's currently stored. Soon I will host it here.");
+    }
   </script>
 </body>
 </html>
