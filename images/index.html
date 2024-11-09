@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Updated Report Card Generator</title>
     <style>
-        /* Enhanced styling for more transparency and appeal */
+        /* Basic Styles */
         body { 
             font-family: Arial, sans-serif; 
             background-color: #f9f9ff; 
@@ -18,184 +18,153 @@
             background-color: rgba(255, 255, 255, 0.85); 
             border-radius: 10px; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
-            transition: box-shadow 0.3s ease; 
-        }
-        .container:hover { 
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
         }
         .header { 
             text-align: center; 
             padding: 10px; 
         }
-        .nav { 
-            text-align: center; 
-            margin-bottom: 20px; 
-        }
-        .nav a { 
-            margin: 0 10px; 
-            color: #444; 
-            text-decoration: none; 
-            font-weight: bold; 
-            opacity: 0.9; 
-        }
-        .nav a:hover { 
-            color: #007acc; 
-            opacity: 1; 
-        }
-        .box { 
-            padding: 20px; 
-            border: 1px solid #ddd; 
-            margin-bottom: 20px; 
-            border-radius: 8px; 
-            background: rgba(255, 255, 255, 0.8); 
-            transition: background 0.3s ease; 
-        }
-        .box:hover { 
-            background: rgba(255, 255, 255, 0.95); 
-        }
-        .input-group { 
-            margin-bottom: 15px; 
-        }
-        label { 
+        .logo { 
+            width: 100px; 
+            height: auto; 
+            margin: 0 auto; 
             display: block; 
-            margin-bottom: 5px; 
         }
-        input[type="text"], input[type="password"] { 
-            width: 100%; 
-            padding: 10px; 
-            border-radius: 5px; 
-            border: 1px solid #ccc; 
-            background-color: rgba(255, 255, 255, 0.9); 
-        }
-        .button { 
+        .landing { 
             text-align: center; 
-            margin-top: 20px; 
+            padding: 30px; 
         }
-        .button button { 
+        .landing button { 
             padding: 10px 20px; 
-            border-radius: 5px; 
-            background-color: #4CAF50; 
-            color: white; 
+            margin: 10px; 
             border: none; 
+            border-radius: 5px; 
             cursor: pointer; 
             font-weight: bold; 
+            color: white; 
+            background-color: #4CAF50; 
             transition: background-color 0.3s ease; 
         }
-        .button button:hover { 
+        .landing button:hover { 
             background-color: #45a049; 
         }
-        .icon { 
-            width: 20px; 
-            vertical-align: middle; 
-            margin-right: 8px; 
-            opacity: 0.8; 
-            transition: opacity 0.3s ease; 
+        .portfolio-link { 
+            margin-top: 15px; 
+            color: #0066cc; 
+            font-weight: bold; 
+            text-decoration: none; 
+            font-size: 14px; 
+            display: block; 
+            transition: color 0.4s ease, transform 0.4s ease; 
+            animation: pulse 1.5s infinite; 
         }
-        .icon:hover { 
-            opacity: 1; 
+        .portfolio-link:hover { 
+            color: #003366; 
+            transform: scale(1.05); 
+        }
+        @keyframes pulse { 
+            0%, 100% { opacity: 0.7; } 
+            50% { opacity: 1; } 
+        }
+        .box { display: none; }
+        .nav { 
+            text-align: center; 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+        }
+        .icon { 
+            width: 24px; 
+            height: 24px; 
+            display: inline-block; 
+            vertical-align: middle; 
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Project Description -->
+    <!-- Landing Page -->
+    <div class="container" id="landing-page">
         <div class="header">
-            <h2>Updated Report Card Generator</h2>
+            <img src="logo.png" alt="Logo" class="logo">
+            <h2>Welcome to the Updated Report Card Generator</h2>
             <p>This project is an updated version of my Report Card Generator, with new test submission links, assignments, exams, and enhanced transparency and customization.</p>
+            <a href="https://saminu-yusuf.github.io" class="portfolio-link">Click this to view my portfolio</a>
         </div>
+        <div class="landing">
+            <button onclick="showSection('login-section')">Login</button>
+            <button onclick="showSection('register-section')">Register</button>
+        </div>
+    </div>
 
+    <!-- Main Container for Login, Register, and Report Card -->
+    <div class="container" id="main-container" style="display: none;">
+        
         <!-- Navigation with Icons Only -->
         <div class="nav">
-            <a href="#home"><img src="home-icon.png" alt="Home" class="icon"></a>
-            <a href="#contact"><img src="contact-icon.png" alt="Contact" class="icon"></a>
-            <a href="#report"><img src="report-icon.png" alt="Report Card" class="icon"></a>
+            <a href="javascript:void(0)" onclick="showSection('login-section')"><img src="home-icon.png" alt="Home" class="icon"></a>
+            <a href="javascript:void(0)" onclick="showSection('contact-section')"><img src="contact-icon.png" alt="Contact" class="icon"></a>
+            <a href="javascript:void(0)" onclick="showSection('report-section')"><img src="report-icon.png" alt="Report Card" class="icon"></a>
         </div>
 
         <!-- Login Section -->
         <div class="box" id="login-section">
-            <h3><img src="login-icon.png" alt="Login" class="icon">Login</h3>
-            <div class="input-group">
-                <label for="student-id">Student ID</label>
-                <input type="text" id="student-id" placeholder="Enter Student ID">
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter Password">
-            </div>
-            <div class="button">
-                <button onclick="login()">Login</button>
-            </div>
+            <h3>Login</h3>
+            <label for="student-id">Student ID</label>
+            <input type="text" id="student-id" placeholder="Enter Student ID">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter Password">
+            <button onclick="login()">Login</button>
             <p>Don't have an account? <a href="javascript:void(0)" onclick="showSection('register-section')">Register here</a></p>
         </div>
 
         <!-- Register Section -->
-        <div class="box" id="register-section" style="display: none;">
-            <h3><img src="register-icon.png" alt="Register" class="icon">Register Your Kid</h3>
-            <div class="input-group">
-                <label for="reg-student-id">Student ID</label>
-                <input type="text" id="reg-student-id" placeholder="Enter Student ID">
-            </div>
-            <div class="input-group">
-                <label for="full-name">Full Name</label>
-                <input type="text" id="full-name" placeholder="Enter Full Name">
-            </div>
-            <div class="input-group">
-                <label for="school">School</label>
-                <input type="text" id="school" placeholder="Enter School Name">
-            </div>
-            <div class="input-group">
-                <label for="term">Term</label>
-                <input type="text" id="term" placeholder="Enter Term">
-            </div>
-            <div class="input-group">
-                <label for="class">Class</label>
-                <input type="text" id="class" placeholder="Enter Class">
-            </div>
-            <div class="input-group">
-                <label for="reg-password">Password</label>
-                <input type="password" id="reg-password" placeholder="Enter Password">
-            </div>
-            <div class="button">
-                <button onclick="register()">Register</button>
-            </div>
+        <div class="box" id="register-section">
+            <h3>Register Your Kid</h3>
+            <label for="reg-student-id">Student ID</label>
+            <input type="text" id="reg-student-id" placeholder="Enter Student ID">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" placeholder="Enter Full Name">
+            <label for="school">School</label>
+            <input type="text" id="school" placeholder="Enter School Name">
+            <label for="term">Term</label>
+            <input type="text" id="term" placeholder="Enter Term">
+            <label for="class">Class</label>
+            <input type="text" id="class" placeholder="Enter Class">
+            <label for="reg-password">Password</label>
+            <input type="password" id="reg-password" placeholder="Enter Password">
+            <button onclick="register()">Register</button>
         </div>
 
-        <!-- Report Card Section with Test and Assignment Links -->
-        <div class="box" id="report-section" style="display: none;">
-            <h3><img src="report-icon.png" alt="Report Card" class="icon">Report Card</h3>
+        <!-- Report Card Section -->
+        <div class="box" id="report-section">
+            <h3>Report Card</h3>
             <p><strong>Full Name:</strong> <span id="profile-name"></span></p>
             <p><strong>School:</strong> <span id="profile-school"></span></p>
             <p><strong>Class:</strong> <span id="profile-class"></span></p>
             <p><strong>Term:</strong> <span id="profile-term"></span></p>
-
-            <!-- Links for Test and Assignment Submissions -->
-            <div class="tests">
-                <p><strong>Submit:</strong></p>
-                <ul>
-                    <li><a href="#first-test">First Test</a></li>
-                    <li><a href="#second-test">Second Test</a></li>
-                    <li><a href="#third-test">Third Test</a></li>
-                    <li><a href="#assignment">Assignment</a></li>
-                    <li><a href="#exam">Examination</a></li>
-                </ul>
-            </div>
+            <ul>
+                <li><a href="#first-test">First Test</a></li>
+                <li><a href="#second-test">Second Test</a></li>
+                <li><a href="#third-test">Third Test</a></li>
+                <li><a href="#assignment">Assignment</a></li>
+                <li><a href="#exam">Examination</a></li>
+            </ul>
         </div>
     </div>
 
     <script>
-        // Store the registered student's data
         let studentProfile = {};
 
-        // Show and hide different sections
         function showSection(sectionId) {
+            document.getElementById("landing-page").style.display = "none";
+            document.getElementById("main-container").style.display = "block";
+            
             document.getElementById("login-section").style.display = "none";
             document.getElementById("register-section").style.display = "none";
             document.getElementById("report-section").style.display = "none";
             document.getElementById(sectionId).style.display = "block";
         }
 
-        // Simulate login function
         function login() {
             const studentId = document.getElementById("student-id").value;
             const password = document.getElementById("password").value;
@@ -212,7 +181,6 @@
             }
         }
 
-        // Simulate register function
         function register() {
             const studentId = document.getElementById("reg-student-id").value;
             const fullName = document.getElementById("full-name").value;
@@ -229,7 +197,6 @@
             }
         }
 
-        // Display profile details
         function displayProfile() {
             document.getElementById("profile-name").innerText = studentProfile.fullName;
             document.getElementById("profile-school").innerText = studentProfile.school;
@@ -239,3 +206,4 @@
     </script>
 </body>
 </html>
+
