@@ -222,13 +222,20 @@
             const password = document.getElementById("reg-password").value;
             if (studentId && fullName && school && term && classValue && password) {
                 studentProfile = { studentId, fullName, school, term, class: classValue, password };
-                alert("Registration successful. You can now log in.");
+                alert("Registration successful. Please login.");
                 showSection("login-section");
             } else {
                 alert("Please fill out all fields.");
             }
         }
 
-        // Display profile data in the report card section
+        // Display profile details
         function displayProfile() {
-            document.getElementById("profile-name").textContent = 
+            document.getElementById("profile-name").innerText = studentProfile.fullName;
+            document.getElementById("profile-school").innerText = studentProfile.school;
+            document.getElementById("profile-class").innerText = studentProfile.class;
+            document.getElementById("profile-term").innerText = studentProfile.term;
+        }
+    </script>
+</body>
+</html>
