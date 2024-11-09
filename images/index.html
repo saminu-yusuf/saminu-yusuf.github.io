@@ -126,7 +126,7 @@
             <div class="button">
                 <button onclick="login()">Login</button>
             </div>
-            <p>Don't have an account? <a href="#register" onclick="showSection('register-section')">Register here</a></p>
+            <p>Don't have an account? <a href="javascript:void(0)" onclick="showSection('register-section')">Register here</a></p>
         </div>
 
         <!-- Register Section -->
@@ -157,8 +157,7 @@
                 <input type="password" id="reg-password" placeholder="Enter Password">
             </div>
             <div class="button">
-                <a href="javascript:void(0)" onclick="showSection('register-section')">Register</a>
-
+                <button onclick="register()">Register</button>
             </div>
         </div>
 
@@ -219,4 +218,17 @@
             const fullName = document.getElementById("full-name").value;
             const school = document.getElementById("school").value;
             const term = document.getElementById("term").value;
-            const classValue = document.getElementById("
+            const classValue = document.getElementById("class").value;
+            const password = document.getElementById("reg-password").value;
+            if (studentId && fullName && school && term && classValue && password) {
+                studentProfile = { studentId, fullName, school, term, class: classValue, password };
+                alert("Registration successful. You can now log in.");
+                showSection("login-section");
+            } else {
+                alert("Please fill out all fields.");
+            }
+        }
+
+        // Display profile data in the report card section
+        function displayProfile() {
+            document.getElementById("profile-name").textContent = 
