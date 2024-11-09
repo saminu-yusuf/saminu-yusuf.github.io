@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updated Report Card Generator</title>
+    <style>
+        /* Basic styling with customization and transparency */
+        body { font-family: Arial, sans-serif; background-color: #f0f0f5; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; background-color: rgba(255, 255, 255, 0.9); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        .header { text-align: center; padding: 10px; }
+        .nav { text-align: center; margin-bottom: 20px; }
+        .nav a { margin: 0 10px; color: #333; text-decoration: none; font-weight: bold; }
+        .box { padding: 20px; border: 1px solid #ddd; margin-bottom: 20px; border-radius: 8px; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input[type="text"], input[type="password"] { width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc; }
+        .button { text-align: center; margin-top: 20px; }
+        .button button { padding: 10px 20px; border-radius: 5px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        .button button:hover { background-color: #45a049; }
+        .icon { width: 20px; vertical-align: middle; margin-right: 8px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Project Description -->
+        <div class="header">
+            <h2>Updated Report Card Generator</h2>
+            <p>This project is the updated version of my Report Card Generator, now featuring links for test submissions, assignments, and exams, along with enhanced customization and transparency.</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav">
+            <a href="#home"><img src="home-icon.png" alt="Home Icon" class="icon">Home</a>
+            <a href="#contact"><img src="contact-icon.png" alt="Contact Icon" class="icon">Contact</a>
+            <a href="#product"><img src="product-icon.png" alt="Product Icon" class="icon">Product</a>
+        </div>
+
+        <!-- Login Section -->
+        <div class="box" id="login-section">
+            <h3><img src="login-icon.png" alt="Login Icon" class="icon">Login</h3>
+            <div class="input-group">
+                <label for="student-id">Student ID</label>
+                <input type="text" id="student-id" placeholder="Enter Student ID">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter Password">
+            </div>
+            <div class="button">
+                <button onclick="login()">Login</button>
+            </div>
+            <p>Don't have an account? <a href="#register" onclick="showSection('register-section')">Register here</a></p>
+        </div>
+
+        <!-- Register Section -->
+        <div class="box" id="register-section" style="display: none;">
+            <h3><img src="register-icon.png" alt="Register Icon" class="icon">Register Your Kid</h3>
+            <div class="input-group">
+                <label for="reg-student-id">Student ID</label>
+                <input type="text" id="reg-student-id" placeholder="Enter Student ID">
+            </div>
+            <div class="input-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" placeholder="Enter Full Name">
+            </div>
+            <div class="input-group">
+                <label for="school">School</label>
+                <input type="text" id="school" placeholder="Enter School Name">
+            </div>
+            <div class="input-group">
+                <label for="term">Term</label>
+                <input type="text" id="term" placeholder="Enter Term">
+            </div>
+            <div class="input-group">
+                <label for="class">Class</label>
+                <input type="text" id="class" placeholder="Enter Class">
+            </div>
+            <div class="button">
+                <button onclick="register()">Register</button>
+            </div>
+        </div>
+
+        <!-- Report Card Section with Test and Assignment Links -->
+        <div class="box" id="report-section" style="display: none;">
+            <h3><img src="report-icon.png" alt="Report Icon" class="icon">Report Card</h3>
+            <p><strong>Full Name:</strong> <span id="profile-name"></span></p>
+            <p><strong>School:</strong> <span id="profile-school"></span></p>
+            <p><strong>Class:</strong> <span id="profile-class"></span></p>
+            <p><strong>Term:</strong> <span id="profile-term"></span></p>
+
+            <!-- Links for Test and Assignment Submissions -->
+            <div class="tests">
+                <p><strong>Submit:</strong></p>
+                <ul>
+                    <li><a href="#first-test">First Test</a></li>
+                    <li><a href="#second-test">Second Test</a></li>
+                    <li><a href="#third-test">Third Test</a></li>
+                    <li><a href="#assignment">Assignment</a></li>
+                    <li><a href="#exam">Examination</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Store the registered student's data
+        let studentProfile = {};
+
+        // Show and hide different sections
+        function showSection(sectionId) {
+            document.getElementById("login-section").style.display = "none";
+            document.getElementById("register-section").style.display = "none";
+            document.getElementById("report-section").style.display = "none";
+            document.getElementById(sectionId).style.display = "block";
+        }
+
+        // Simulate login function
+        function login() {
+            const studentId = document.getElementById("student-id").value;
+            const password = document.getElementById("password").value;
+            if (studentId && password) {
+                if (studentId === studentProfile.studentId) {
+                    alert("Login successful");
+                    displayProfile();
+                    showSection("report-section");
+                } else {
+                    alert("Student ID does not match. Please register first.");
+                }
+            } else {
+                alert("Please enter both Student ID and Password.");
+            }
+        }
+
+        // Simulate register function
+        function register() {
+            const studentId = document.getElementById("reg-student-id").value;
+            const fullName = document.getElementById("full-name").value;
+            const school = document.getElementById("school").value;
+            const term = document.getElementById("term").value;
+            const classValue = document.getElementById("class").value;
+
+            if (studentId && fullName && school && term && classValue) {
+                // Store the registered student's data
+                studentProfile = {
+                    studentId: studentId,
+                    fullName: fullName,
+                    school: school,
+                    term: term,
+                    class: classValue
+                };
+                alert("Registration successful. Please log in.");
+                showSection("login-section");
+            } else {
+                alert("Please fill in all fields.");
+            }
+        }
+
+        // Display the registered student's profile in the report section
+        function displayProfile() {
+            document.getElementById("profile-name").textContent = studentProfile.fullName;
+            document.getElementById("profile-school").textContent = studentProfile.school;
+            document.getElementById("profile-class").textContent = studentProfile.class;
+            document.getElementById("profile-term").textContent = studentProfile.term;
+        }
+    </script>
+</body>
+</html>
