@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact and Messaging</title>
+    <style>
+        /* Styles */
+        .container { 
+            max-width: 600px; 
+            margin: auto; 
+            padding: 20px; 
+            background-color: #f9f9ff; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+        }
+        .section-title { 
+            text-align: center; 
+            font-weight: bold; 
+        }
+        .form-group { 
+            margin-bottom: 15px; 
+            text-align: left; 
+        }
+        label { 
+            display: block; 
+            margin-bottom: 5px; 
+        }
+        input[type="text"], textarea { 
+            width: 100%; 
+            padding: 8px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+        }
+        .messages { 
+            margin-top: 20px; 
+        }
+        .message-item { 
+            border-bottom: 1px solid #ddd; 
+            padding: 10px 0; 
+        }
+        .alert { 
+            background-color: #f4f4f4; 
+            padding: 10px; 
+            border-radius: 5px; 
+            margin-top: 15px; 
+            text-align: center; 
+        }
+        .button { 
+            padding: 10px 20px; 
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        }
+        .link { 
+            color: #007BFF; 
+            cursor: pointer; 
+            text-decoration: underline; 
+            display: block; 
+            margin-top: 15px; 
+            text-align: center; 
+        }
+        .nav-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .nav-links a {
+            margin: 0 10px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h3 class="section-title">Contact Head</h3>
+
+    <!-- Contact Form -->
+    <div id="contact-form">
+        <div class="form-group">
+            <label for="parent-name">Parent Name:</label>
+            <input type="text" id="parent-name" placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+            <label for="message-content">Message:</label>
+            <textarea id="message-content" rows="4" placeholder="Write your message here"></textarea>
+        </div>
+        <button class="button" onclick="sendMessage()">Send Message</button>
+    </div>
+
+    <!-- Messages Inbox -->
+    <div class="messages">
+        <h4>Inbox</h4>
+        <div id="inbox"></div>
+    </div>
+
+    <!-- Alerts for phone and email -->
+    <div id="alerts" class="alert" style="display: none;"></div>
+
+    <!-- Link to Enable Email/SMS Notifications -->
+    <div class="link" onclick="enableNotifications()">Enable Email/SMS Notifications</div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
+        <a href="index.html">Landing Page</a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Login</a>
+        <!-- Add other navigation links here -->
+    </div>
+</div>
+
+<script>
+    const inbox = document.getElementById("inbox");
+    const alerts = document.getElementById("alerts");
+
+    // Load messages from localStorage
+    function loadMessages() {
+        const messages = JSON.parse(localStorage.getItem("messages")) || [];
+        inbox.innerHTML = ""; // Clear previous messages
+
+        messages.forEach((msg, index) => {
+            const messageElement = document.createElement("div");
+            messageElement.className = "message-item";
+            messageElement.innerHTML = `<strong>${msg.name}:</strong> ${msg.content}`;
+            inbox.appendChild(messageElement);
+        });
+    }
+
+    // Send a message
+    function sendMessage() {
+        const parentName = document.getElementById("parent-name").value;
+        const messageContent = document.getElementById("message-content").value;
+
+        if (!parentName || !messageContent) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        // Save message in localStorage
+        const messages = JSON.parse(localStorage.getItem("messages")) || [];
+        messages.push({ name: parentName, content: messageContent });
+        localStorage.setItem("messages", JSON.stringify(messages));
+
+        // Display new message in inbox
+        loadMessages();
+
+        // Show alert for phone and email
+        alerts.style.display = "block";
+        alerts.innerHTML = `New message from ${parentName}: "${messageContent}"`;
+        setTimeout(() => {
+            alerts.style.display = "none"; // Hide alert after 5 seconds
+        }, 5000);
+
+        // Clear form fields
+        document.getElementById("parent-name").value = "";
+        document.getElementById("message-content").value = "";
+
+        // Notify user
+        alert("Message sent successfully!");
+    }
+
+    // Function to enable Email/SMS Notifications
+    function enableNotifications() {
+        const email = prompt("Enter your email address:");
+        const phone = prompt("Enter your phone number:");
+
+        if (email || phone) {
+            const notifications = {
+                email: email,
+                phone: phone
+            };
+
+            localStorage.setItem("notifications", JSON.stringify(notifications));
+            alert("Notifications enabled! You will receive alerts at your provided contact information.");
+        } else {
+            alert("Please enter at least one contact method.");
+        }
+    }
+
+    // Initial load of messages
+    loadMessages();
+</script>
+</body>
+</html>
