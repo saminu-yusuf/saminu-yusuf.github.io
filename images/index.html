@@ -10,16 +10,18 @@
             font-family: Arial, sans-serif; 
             background-color: #f9f9ff; 
             color: #333; 
+            margin: 0; 
+            padding: 0; 
         }
         .container { 
             max-width: 600px; 
-            margin: 0 auto; 
+            margin: 20px auto; 
             padding: 20px; 
             background-color: rgba(255, 255, 255, 0.85); 
             border-radius: 10px; 
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
         }
-        .header { 
+        .header, .section-title { 
             text-align: center; 
             padding: 10px; 
         }
@@ -29,11 +31,11 @@
             margin: 0 auto; 
             display: block; 
         }
-        .landing { 
+        .landing, .box { 
             text-align: center; 
-            padding: 30px; 
+            padding: 20px; 
         }
-        .landing button { 
+        .landing button, .box button { 
             padding: 10px 20px; 
             margin: 10px; 
             border: none; 
@@ -44,7 +46,7 @@
             background-color: #4CAF50; 
             transition: background-color 0.3s ease; 
         }
-        .landing button:hover { 
+        .landing button:hover, .box button:hover { 
             background-color: #45a049; 
         }
         .portfolio-link { 
@@ -57,15 +59,10 @@
             transition: color 0.4s ease, transform 0.4s ease; 
             animation: pulse 1.5s infinite; 
         }
-        .portfolio-link:hover { 
-            color: #003366; 
-            transform: scale(1.05); 
-        }
         @keyframes pulse { 
             0%, 100% { opacity: 0.7; } 
             50% { opacity: 1; } 
         }
-        .box { display: none; }
         .nav { 
             text-align: center; 
             display: flex; 
@@ -75,8 +72,20 @@
         .icon { 
             width: 24px; 
             height: 24px; 
-            display: inline-block; 
-            vertical-align: middle; 
+        }
+        .form-group { 
+            margin-bottom: 15px; 
+            text-align: left; 
+        }
+        label { 
+            display: block; 
+            margin-bottom: 5px; 
+        }
+        input[type="text"], input[type="password"] { 
+            width: 100%; 
+            padding: 8px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
         }
     </style>
 </head>
@@ -96,52 +105,74 @@
         </div>
     </div>
 
-    <!-- Main Container for Login, Register, and Report Card -->
+    <!-- Main Container for Login, Register, Profile, and Report Card -->
     <div class="container" id="main-container" style="display: none;">
-        
+
         <!-- Navigation with Icons Only -->
         <div class="nav">
             <a href="javascript:void(0)" onclick="showSection('login-section')"><img src="home-icon.png" alt="Home" class="icon"></a>
             <a href="javascript:void(0)" onclick="showSection('contact-section')"><img src="contact-icon.png" alt="Contact" class="icon"></a>
-            <a href="javascript:void(0)" onclick="showSection('report-section')"><img src="report-icon.png" alt="Report Card" class="icon"></a>
+            <a href="javascript:void(0)" onclick="showSection('profile-section')"><img src="report-icon.png" alt="Profile" class="icon"></a>
         </div>
 
         <!-- Login Section -->
         <div class="box" id="login-section">
-            <h3>Login</h3>
-            <label for="student-id">Student ID</label>
-            <input type="text" id="student-id" placeholder="Enter Student ID">
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter Password">
+            <h3 class="section-title">Login</h3>
+            <div class="form-group">
+                <label for="student-id">Student ID</label>
+                <input type="text" id="student-id" placeholder="Enter Student ID">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter Password">
+            </div>
             <button onclick="login()">Login</button>
             <p>Don't have an account? <a href="javascript:void(0)" onclick="showSection('register-section')">Register here</a></p>
         </div>
 
         <!-- Register Section -->
         <div class="box" id="register-section">
-            <h3>Register Your Kid</h3>
-            <label for="reg-student-id">Student ID</label>
-            <input type="text" id="reg-student-id" placeholder="Enter Student ID">
-            <label for="full-name">Full Name</label>
-            <input type="text" id="full-name" placeholder="Enter Full Name">
-            <label for="school">School</label>
-            <input type="text" id="school" placeholder="Enter School Name">
-            <label for="term">Term</label>
-            <input type="text" id="term" placeholder="Enter Term">
-            <label for="class">Class</label>
-            <input type="text" id="class" placeholder="Enter Class">
-            <label for="reg-password">Password</label>
-            <input type="password" id="reg-password" placeholder="Enter Password">
+            <h3 class="section-title">Register Your Kid</h3>
+            <div class="form-group">
+                <label for="reg-student-id">Student ID</label>
+                <input type="text" id="reg-student-id" placeholder="Enter Student ID">
+            </div>
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" placeholder="Enter Full Name">
+            </div>
+            <div class="form-group">
+                <label for="school">School</label>
+                <input type="text" id="school" placeholder="Enter School Name">
+            </div>
+            <div class="form-group">
+                <label for="term">Term</label>
+                <input type="text" id="term" placeholder="Enter Term">
+            </div>
+            <div class="form-group">
+                <label for="class">Class</label>
+                <input type="text" id="class" placeholder="Enter Class">
+            </div>
+            <div class="form-group">
+                <label for="reg-password">Password</label>
+                <input type="password" id="reg-password" placeholder="Enter Password">
+            </div>
             <button onclick="register()">Register</button>
         </div>
 
-        <!-- Report Card Section -->
-        <div class="box" id="report-section">
-            <h3>Report Card</h3>
+        <!-- Profile Section -->
+        <div class="box" id="profile-section">
+            <h3 class="section-title">Profile</h3>
             <p><strong>Full Name:</strong> <span id="profile-name"></span></p>
             <p><strong>School:</strong> <span id="profile-school"></span></p>
             <p><strong>Class:</strong> <span id="profile-class"></span></p>
             <p><strong>Term:</strong> <span id="profile-term"></span></p>
+            <a href="javascript:void(0)" onclick="showSection('report-section')">View Report Card</a>
+        </div>
+
+        <!-- Report Card Section -->
+        <div class="box" id="report-section">
+            <h3 class="section-title">Report Card</h3>
             <ul>
                 <li><a href="#first-test">First Test</a></li>
                 <li><a href="#second-test">Second Test</a></li>
@@ -161,6 +192,7 @@
             
             document.getElementById("login-section").style.display = "none";
             document.getElementById("register-section").style.display = "none";
+            document.getElementById("profile-section").style.display = "none";
             document.getElementById("report-section").style.display = "none";
             document.getElementById(sectionId).style.display = "block";
         }
@@ -172,38 +204,34 @@
                 if (studentId === studentProfile.studentId && password === studentProfile.password) {
                     alert("Login successful");
                     displayProfile();
-                    showSection("report-section");
+                    showSection("profile-section");
                 } else {
                     alert("Student ID or password does not match. Please register first.");
                 }
             } else {
-                alert("Please enter both Student ID and Password.");
+                alert("Please enter Student ID and password.");
             }
         }
 
         function register() {
-            const studentId = document.getElementById("reg-student-id").value;
-            const fullName = document.getElementById("full-name").value;
-            const school = document.getElementById("school").value;
-            const term = document.getElementById("term").value;
-            const classValue = document.getElementById("class").value;
-            const password = document.getElementById("reg-password").value;
-            if (studentId && fullName && school && term && classValue && password) {
-                studentProfile = { studentId, fullName, school, term, class: classValue, password };
-                alert("Registration successful. Please login.");
-                showSection("login-section");
-            } else {
-                alert("Please fill out all fields.");
-            }
+            studentProfile = {
+                studentId: document.getElementById("reg-student-id").value,
+                name: document.getElementById("full-name").value,
+                school: document.getElementById("school").value,
+                class: document.getElementById("class").value,
+                term: document.getElementById("term").value,
+                password: document.getElementById("reg-password").value
+            };
+            alert("Registration successful!");
+            showSection("login-section");
         }
 
         function displayProfile() {
-            document.getElementById("profile-name").innerText = studentProfile.fullName;
-            document.getElementById("profile-school").innerText = studentProfile.school;
-            document.getElementById("profile-class").innerText = studentProfile.class;
-            document.getElementById("profile-term").innerText = studentProfile.term;
+            document.getElementById("profile-name").textContent = studentProfile.name;
+            document.getElementById("profile-school").textContent = studentProfile.school;
+            document.getElementById("profile-class").textContent = studentProfile.class;
+            document.getElementById("profile-term").textContent = studentProfile.term;
         }
     </script>
 </body>
 </html>
-
