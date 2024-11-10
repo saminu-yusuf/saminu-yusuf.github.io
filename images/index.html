@@ -110,10 +110,9 @@
 
         <!-- Navigation with Icons Only -->
         <div class="nav">
-            <a href="javascript:void(0)" onclick="showSection('login-section')"><img src="home.icon.png" alt="Home" class="icon"></a>
+            <a href="javascript:void(0)" onclick="showSection('login-section')"><img src="home-icon.png" alt="Home" class="icon"></a>
             <a href="javascript:void(0)" onclick="showSection('contact-section')"><img src="contact-icon.png" alt="Contact" class="icon"></a>
             <a href="javascript:void(0)" onclick="showSection('profile-section')"><img src="report-icon.png" alt="Profile" class="icon"></a>
-             <a href="javascript:void(0)" onclick="showSection('landing-page')"><img src="https://saminu-yusuf.github.io/images/" alt="Go-back" class="icon"></a>
         </div>
 
         <!-- Login Section -->
@@ -128,6 +127,7 @@
                 <input type="password" id="password" placeholder="Enter Password">
             </div>
             <button onclick="login()">Login</button>
+            <p><a href="javascript:void(0)" onclick="forgotPassword()">Forgot Password?</a></p>
             <p>Don't have an account? <a href="javascript:void(0)" onclick="showSection('register-section')">Register here</a></p>
         </div>
 
@@ -185,8 +185,6 @@
     </div>
 
     <script>
-        let studentProfile = {};
-
         function showSection(sectionId) {
             document.getElementById("landing-page").style.display = "none";
             document.getElementById("main-container").style.display = "block";
@@ -201,28 +199,49 @@
         function login() {
             const studentId = document.getElementById("student-id").value;
             const password = document.getElementById("password").value;
-            if (studentId && password) {
-                if (studentId === studentProfile.studentId && password === studentProfile.password) {
-                    alert("Login successful");
-                    displayProfile();
-                    showSection("profile-section");
-                } else {
-                    alert("Student ID or password does not match. Please register first.");
-                }
+
+            const storedProfile = JSON.parse(localStorage.getItem(studentId));
+
+            if (storedProfile && storedProfile.password === password) {
+                studentProfile = storedProfile;
+                alert("Login successful!");
+                showSection("profile-section");
+                displayProfile();
             } else {
-                alert("Please enter Student ID and password.");
+                alert("Invalid Student ID or Password. Please try again.");
+            }
+        }
+
+        function forgotPassword() {
+            const studentId = prompt("Enter your Student ID:");
+            const storedProfile = JSON.parse(localStorage.getItem(studentId));
+
+            if (storedProfile) {
+                alert(`Your password is: ${storedProfile.password}`);
+            } else {
+                alert("Student ID not found.");
             }
         }
 
         function register() {
+            const studentId = document.getElementById("reg-student-id").value;
+            const password = document.getElementById("reg-password").value;
+
+            if (localStorage.getItem(studentId)) {
+                alert("Student ID already registered.");
+                return;
+            }
+
             studentProfile = {
-                studentId: document.getElementById("reg-student-id").value,
+                studentId: studentId,
                 name: document.getElementById("full-name").value,
                 school: document.getElementById("school").value,
                 class: document.getElementById("class").value,
                 term: document.getElementById("term").value,
-                password: document.getElementById("reg-password").value
+                password: password
             };
+
+            localStorage.setItem(studentId, JSON.stringify(studentProfile));
             alert("Registration successful!");
             showSection("login-section");
         }
