@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact and Messaging</title>
+    <title>Contact and Messaging with Notification Option</title>
     <style>
         /* Styles */
         .container { 
@@ -54,6 +54,23 @@
             border-radius: 5px; 
             cursor: pointer; 
         }
+        .link { 
+            color: #007BFF; 
+            cursor: pointer; 
+            text-decoration: underline; 
+            display: block; 
+            margin-top: 15px; 
+            text-align: center; 
+        }
+        .nav-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .nav-links a {
+            margin: 0 10px;
+            color: #007BFF;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -82,6 +99,17 @@
 
     <!-- Alerts for phone and email -->
     <div id="alerts" class="alert" style="display: none;"></div>
+
+    <!-- Link to Enable Email/SMS Notifications -->
+    <div class="link" onclick="enableNotifications()">Enable Email/SMS Notifications</div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
+        <a href="index.html">Landing Page</a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Login</a>
+        <!-- Add other navigation links here -->
+    </div>
 </div>
 
 <script>
@@ -132,6 +160,24 @@
 
         // Notify user
         alert("Message sent successfully!");
+    }
+
+    // Function to enable Email/SMS Notifications
+    function enableNotifications() {
+        const email = prompt("Enter your email address:");
+        const phone = prompt("Enter your phone number:");
+
+        if (email || phone) {
+            const notifications = {
+                email: email,
+                phone: phone
+            };
+
+            localStorage.setItem("notifications", JSON.stringify(notifications));
+            alert("Notifications enabled! You will receive alerts at your provided contact information.");
+        } else {
+            alert("Please enter at least one contact method.");
+        }
     }
 
     // Initial load of messages
