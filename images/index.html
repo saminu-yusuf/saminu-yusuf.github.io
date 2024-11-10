@@ -3,75 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Updated Report Card Generator</title>
+    <title>Contact and Messaging</title>
     <style>
-        /* Basic Styles */
-        body { 
-            font-family: Arial, sans-serif; 
-            background-color: #f9f9ff; 
-            color: #333; 
-            margin: 0; 
-            padding: 0; 
-        }
+        /* Styles */
         .container { 
             max-width: 600px; 
-            margin: 20px auto; 
+            margin: auto; 
             padding: 20px; 
-            background-color: rgba(255, 255, 255, 0.85); 
+            background-color: #f9f9ff; 
             border-radius: 10px; 
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
         }
-        .header, .section-title { 
+        .section-title { 
             text-align: center; 
-            padding: 10px; 
-        }
-        .logo { 
-            width: 100px; 
-            height: auto; 
-            margin: 0 auto; 
-            display: block; 
-        }
-        .landing, .box { 
-            text-align: center; 
-            padding: 20px; 
-        }
-        .landing button, .box button { 
-            padding: 10px 20px; 
-            margin: 10px; 
-            border: none; 
-            border-radius: 5px; 
-            cursor: pointer; 
             font-weight: bold; 
-            color: white; 
-            background-color: #4CAF50; 
-            transition: background-color 0.3s ease; 
-        }
-        .landing button:hover, .box button:hover { 
-            background-color: #45a049; 
-        }
-        .portfolio-link { 
-            margin-top: 15px; 
-            color: #0066cc; 
-            font-weight: bold; 
-            text-decoration: none; 
-            font-size: 14px; 
-            display: block; 
-            transition: color 0.4s ease, transform 0.4s ease; 
-            animation: pulse 1.5s infinite; 
-        }
-        @keyframes pulse { 
-            0%, 100% { opacity: 0.7; } 
-            50% { opacity: 1; } 
-        }
-        .nav { 
-            text-align: center; 
-            display: flex; 
-            justify-content: center; 
-            gap: 15px; 
-        }
-        .icon { 
-            width: 24px; 
-            height: 24px; 
         }
         .form-group { 
             margin-bottom: 15px; 
@@ -81,177 +26,116 @@
             display: block; 
             margin-bottom: 5px; 
         }
-        input[type="text"], input[type="password"] { 
+        input[type="text"], textarea { 
             width: 100%; 
             padding: 8px; 
             border: 1px solid #ccc; 
             border-radius: 4px; 
         }
+        .messages { 
+            margin-top: 20px; 
+        }
+        .message-item { 
+            border-bottom: 1px solid #ddd; 
+            padding: 10px 0; 
+        }
+        .alert { 
+            background-color: #f4f4f4; 
+            padding: 10px; 
+            border-radius: 5px; 
+            margin-top: 15px; 
+            text-align: center; 
+        }
+        .button { 
+            padding: 10px 20px; 
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        }
     </style>
 </head>
 <body>
 
-    <!-- Landing Page -->
-    <div class="container" id="landing-page">
-        <div class="header">
-            <img src="logo.png" alt="Logo" class="logo">
-            <h2>Welcome to the Updated Report Card Generator</h2>
-            <p>This project is an updated version of my Report Card Generator, with new test submission links, assignments, exams, and enhanced transparency and customization.</p>
-            <a href="https://saminu-yusuf.github.io" class="portfolio-link">Click this to view my portfolio</a>
+<div class="container">
+    <h3 class="section-title">Contact Head</h3>
+
+    <!-- Contact Form -->
+    <div id="contact-form">
+        <div class="form-group">
+            <label for="parent-name">Parent Name:</label>
+            <input type="text" id="parent-name" placeholder="Enter your name">
         </div>
-        <div class="landing">
-            <button onclick="showSection('login-section')">Login</button>
-            <button onclick="showSection('register-section')">Register</button>
+        <div class="form-group">
+            <label for="message-content">Message:</label>
+            <textarea id="message-content" rows="4" placeholder="Write your message here"></textarea>
         </div>
+        <button class="button" onclick="sendMessage()">Send Message</button>
     </div>
 
-    <!-- Main Container for Login, Register, Profile, and Report Card -->
-    <div class="container" id="main-container" style="display: none;">
-
-        <!-- Navigation with Icons Only -->
-        <div class="nav">
-            <a href="javascript:void(0)" onclick="showSection('login-section')"><img src="home-icon.png" alt="Home" class="icon"></a>
-            <a href="javascript:void(0)" onclick="showSection('contact-section')"><img src="contact-icon.png" alt="Contact" class="icon"></a>
-            <a href="javascript:void(0)" onclick="showSection('profile-section')"><img src="report-icon.png" alt="Profile" class="icon"></a>
-        </div>
-
-        <!-- Login Section -->
-        <div class="box" id="login-section">
-            <h3 class="section-title">Login</h3>
-            <div class="form-group">
-                <label for="student-id">Student ID</label>
-                <input type="text" id="student-id" placeholder="Enter Student ID">
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter Password">
-            </div>
-            <button onclick="login()">Login</button>
-            <p><a href="javascript:void(0)" onclick="forgotPassword()">Forgot Password?</a></p>
-            <p>Don't have an account? <a href="javascript:void(0)" onclick="showSection('register-section')">Register here</a></p>
-        </div>
-
-        <!-- Register Section -->
-        <div class="box" id="register-section">
-            <h3 class="section-title">Register Your Kid</h3>
-            <div class="form-group">
-                <label for="reg-student-id">Student ID</label>
-                <input type="text" id="reg-student-id" placeholder="Enter Student ID">
-            </div>
-            <div class="form-group">
-                <label for="full-name">Full Name</label>
-                <input type="text" id="full-name" placeholder="Enter Full Name">
-            </div>
-            <div class="form-group">
-                <label for="school">School</label>
-                <input type="text" id="school" placeholder="Enter School Name">
-            </div>
-            <div class="form-group">
-                <label for="term">Term</label>
-                <input type="text" id="term" placeholder="Enter Term">
-            </div>
-            <div class="form-group">
-                <label for="class">Class</label>
-                <input type="text" id="class" placeholder="Enter Class">
-            </div>
-            <div class="form-group">
-                <label for="reg-password">Password</label>
-                <input type="password" id="reg-password" placeholder="Enter Password">
-            </div>
-            <button onclick="register()">Register</button>
-        </div>
-
-        <!-- Profile Section -->
-        <div class="box" id="profile-section">
-            <h3 class="section-title">Profile</h3>
-            <p><strong>Full Name:</strong> <span id="profile-name"></span></p>
-            <p><strong>School:</strong> <span id="profile-school"></span></p>
-            <p><strong>Class:</strong> <span id="profile-class"></span></p>
-            <p><strong>Term:</strong> <span id="profile-term"></span></p>
-            <a href="javascript:void(0)" onclick="showSection('report-section')">View Report Card</a>
-        </div>
-
-        <!-- Report Card Section -->
-        <div class="box" id="report-section">
-            <h3 class="section-title">Report Card</h3>
-            <ul>
-                <li><a href="#first-test">First Test</a></li>
-                <li><a href="#second-test">Second Test</a></li>
-                <li><a href="#third-test">Third Test</a></li>
-                <li><a href="#assignment">Assignment</a></li>
-                <li><a href="#exam">Examination</a></li>
-            </ul>
-        </div>
+    <!-- Messages Inbox -->
+    <div class="messages">
+        <h4>Inbox</h4>
+        <div id="inbox"></div>
     </div>
 
-    <script>
-        function showSection(sectionId) {
-            document.getElementById("landing-page").style.display = "none";
-            document.getElementById("main-container").style.display = "block";
-            
-            document.getElementById("login-section").style.display = "none";
-            document.getElementById("register-section").style.display = "none";
-            document.getElementById("profile-section").style.display = "none";
-            document.getElementById("report-section").style.display = "none";
-            document.getElementById(sectionId).style.display = "block";
+    <!-- Alerts for phone and email -->
+    <div id="alerts" class="alert" style="display: none;"></div>
+</div>
+
+<script>
+    const inbox = document.getElementById("inbox");
+    const alerts = document.getElementById("alerts");
+
+    // Load messages from localStorage
+    function loadMessages() {
+        const messages = JSON.parse(localStorage.getItem("messages")) || [];
+        inbox.innerHTML = ""; // Clear previous messages
+
+        messages.forEach((msg, index) => {
+            const messageElement = document.createElement("div");
+            messageElement.className = "message-item";
+            messageElement.innerHTML = `<strong>${msg.name}:</strong> ${msg.content}`;
+            inbox.appendChild(messageElement);
+        });
+    }
+
+    // Send a message
+    function sendMessage() {
+        const parentName = document.getElementById("parent-name").value;
+        const messageContent = document.getElementById("message-content").value;
+
+        if (!parentName || !messageContent) {
+            alert("Please fill in all fields.");
+            return;
         }
 
-        function login() {
-            const studentId = document.getElementById("student-id").value;
-            const password = document.getElementById("password").value;
+        // Save message in localStorage
+        const messages = JSON.parse(localStorage.getItem("messages")) || [];
+        messages.push({ name: parentName, content: messageContent });
+        localStorage.setItem("messages", JSON.stringify(messages));
 
-            const storedProfile = JSON.parse(localStorage.getItem(studentId));
+        // Display new message in inbox
+        loadMessages();
 
-            if (storedProfile && storedProfile.password === password) {
-                studentProfile = storedProfile;
-                alert("Login successful!");
-                showSection("profile-section");
-                displayProfile();
-            } else {
-                alert("Invalid Student ID or Password. Please try again.");
-            }
-        }
+        // Show alert for phone and email
+        alerts.style.display = "block";
+        alerts.innerHTML = `New message from ${parentName}: "${messageContent}"`;
+        setTimeout(() => {
+            alerts.style.display = "none"; // Hide alert after 5 seconds
+        }, 5000);
 
-        function forgotPassword() {
-            const studentId = prompt("Enter your Student ID:");
-            const storedProfile = JSON.parse(localStorage.getItem(studentId));
+        // Clear form fields
+        document.getElementById("parent-name").value = "";
+        document.getElementById("message-content").value = "";
 
-            if (storedProfile) {
-                alert(`Your password is: ${storedProfile.password}`);
-            } else {
-                alert("Student ID not found.");
-            }
-        }
+        // Notify user
+        alert("Message sent successfully!");
+    }
 
-        function register() {
-            const studentId = document.getElementById("reg-student-id").value;
-            const password = document.getElementById("reg-password").value;
-
-            if (localStorage.getItem(studentId)) {
-                alert("Student ID already registered.");
-                return;
-            }
-
-            studentProfile = {
-                studentId: studentId,
-                name: document.getElementById("full-name").value,
-                school: document.getElementById("school").value,
-                class: document.getElementById("class").value,
-                term: document.getElementById("term").value,
-                password: password
-            };
-
-            localStorage.setItem(studentId, JSON.stringify(studentProfile));
-            alert("Registration successful!");
-            showSection("login-section");
-        }
-
-        function displayProfile() {
-            document.getElementById("profile-name").textContent = studentProfile.name;
-            document.getElementById("profile-school").textContent = studentProfile.school;
-            document.getElementById("profile-class").textContent = studentProfile.class;
-            document.getElementById("profile-term").textContent = studentProfile.term;
-        }
-    </script>
+    // Initial load of messages
+    loadMessages();
+</script>
 </body>
 </html>
