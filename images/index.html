@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,14 +106,13 @@
         </div>
     </div>
 
-    <!-- Main Container for Login, Register, Profile, Report Card, and Contact -->
+    <!-- Main Container for Login, Register, Profile, and Report Card -->
     <div class="container" id="main-container" style="display: none;">
 
         <!-- Navigation with Icons Only -->
         <div class="nav">
             <a href="javascript:void(0)" onclick="showSection('login-section')"><img src="home-icon.png" alt="Home" class="icon"></a>
-            <a href="contact.html">
-    <img src="contact-icon.png" alt="Contact" class="icon"></a>  
+            <a href="javascript:void(0)" onclick="showSection('contact-section')"><img src="contact-icon.png" alt="Contact" class="icon"></a>
             <a href="javascript:void(0)" onclick="showSection('profile-section')"><img src="report-icon.png" alt="Profile" class="icon"></a>
         </div>
 
@@ -182,15 +182,6 @@
                 <li><a href="#exam">Examination</a></li>
             </ul>
         </div>
-
-        <!-- Contact Section -->
-        <div class="box" id="contact-section" style="display: none;">
-            <h3 class="section-title">Contact</h3>
-            <p>Email: support@example.com</p>
-            <p>Phone: +123 456 7890</p>
-            <button onclick="showSection('main-container')">Back</button>
-        </div>
-
     </div>
 
     <script>
@@ -204,30 +195,43 @@
             document.getElementById("register-section").style.display = "none";
             document.getElementById("profile-section").style.display = "none";
             document.getElementById("report-section").style.display = "none";
-            document.getElementById("contact-section").style.display = "none";
-            
             document.getElementById(sectionId).style.display = "block";
         }
 
         function login() {
-            studentProfile = {
-                name: "John Doe",
-                school: "ABC High School",
-                class: "Grade 10",
-                term: "First Term"
-            };
-
-            document.getElementById("profile-name").innerText = studentProfile.name;
-            document.getElementById("profile-school").innerText = studentProfile.school;
-            document.getElementById("profile-class").innerText = studentProfile.class;
-            document.getElementById("profile-term").innerText = studentProfile.term;
-
-            showSection("profile-section");
+            const studentId = document.getElementById("student-id").value;
+            const password = document.getElementById("password").value;
+            if (studentId && password) {
+                if (studentId === studentProfile.studentId && password === studentProfile.password) {
+                    alert("Login successful");
+                    displayProfile();
+                    showSection("profile-section");
+                } else {
+                    alert("Student ID or password does not match. Please register first.");
+                }
+            } else {
+                alert("Please enter Student ID and password.");
+            }
         }
 
         function register() {
+            studentProfile = {
+                studentId: document.getElementById("reg-student-id").value,
+                name: document.getElementById("full-name").value,
+                school: document.getElementById("school").value,
+                class: document.getElementById("class").value,
+                term: document.getElementById("term").value,
+                password: document.getElementById("reg-password").value
+            };
             alert("Registration successful!");
             showSection("login-section");
+        }
+
+        function displayProfile() {
+            document.getElementById("profile-name").textContent = studentProfile.name;
+            document.getElementById("profile-school").textContent = studentProfile.school;
+            document.getElementById("profile-class").textContent = studentProfile.class;
+            document.getElementById("profile-term").textContent = studentProfile.term;
         }
     </script>
 </body>
