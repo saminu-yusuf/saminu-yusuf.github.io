@@ -33,12 +33,32 @@
         @media (min-width: 1025px) { /* Large Screens */
             .container { width: 60%; padding: 20px; }
         }
+
+       /* Hide Navigation Initially */
+.nav-hidden {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+/* Magic Animation to Display Navigation on Other Pages */
+.nav-visible {
+    display: block;
+    opacity: 1;
+    animation: magicAppear 1s ease-in-out;
+}
+
+@keyframes magicAppear {
+    0% { opacity: 0; transform: scale(0.8) translateY(-20px); }
+    50% { opacity: 0.5; transform: scale(1.05) translateY(10px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+} 
     </style>
 </head>
 <body>
 
     <!-- Navigation Bar -->
-    <div class="nav-hidden">
+    <div class="nav-visible">
         <a href="index.html">Home</a>
         <a href="contact.html">Contact</a> <!-- Contact Link -->
         <a href="register.html">Register</a>
