@@ -37,6 +37,14 @@
 </head>
 <body>
 
+    <!-- Navigation Bar -->
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a> <!-- Contact Link -->
+        <a href="register.html">Register</a>
+        <a href="https://saminu-yusuf.github.io">Portfolio</a>
+    </div>
+
     <!-- Landing Page -->
     <div class="container" id="landing-page">
         <div class="header">
@@ -56,7 +64,7 @@
     <div class="container" id="main-container" style="display: none;">
 
         <!-- Login Section -->
-        <div class="box" id="login-section">
+        <div class="box" id="login-section" style="display: none;">
             <h3 class="section-title">Login</h3>
             <div class="form-group">
                 <label for="student-id">Student ID</label>
@@ -71,7 +79,54 @@
             <p>Don't have an account? <a href="javascript:void(0)" onclick="showSection('register-section')">Register here</a></p>
         </div>
 
-        <!-- Rest of Sections (Register, Profile, Report Card) remain the same -->
+        <!-- Register Section -->
+        <div class="box" id="register-section" style="display: none;">
+            <h3 class="section-title">Register</h3>
+            <div class="form-group">
+                <label for="reg-student-id">Student ID</label>
+                <input type="text" id="reg-student-id" placeholder="Enter Student ID">
+            </div>
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" placeholder="Enter Full Name">
+            </div>
+            <div class="form-group">
+                <label for="school">School</label>
+                <input type="text" id="school" placeholder="Enter School Name">
+            </div>
+            <div class="form-group">
+                <label for="class">Class</label>
+                <input type="text" id="class" placeholder="Enter Class">
+            </div>
+            <div class="form-group">
+                <label for="term">Term</label>
+                <input type="text" id="term" placeholder="Enter Term">
+            </div>
+            <div class="form-group">
+                <label for="reg-password">Password</label>
+                <input type="password" id="reg-password" placeholder="Enter Password">
+            </div>
+            <button onclick="register()">Register</button>
+            <p>Already have an account? <a href="javascript:void(0)" onclick="showSection('login-section')">Login here</a></p>
+        </div>
+
+        <!-- Profile Section -->
+        <div class="box" id="profile-section" style="display: none;">
+            <h3 class="section-title">Student Profile</h3>
+            <p><strong>Name:</strong> <span id="profile-name"></span></p>
+            <p><strong>Student ID:</strong> <span id="profile-student-id"></span></p>
+            <p><strong>School:</strong> <span id="profile-school"></span></p>
+            <p><strong>Class:</strong> <span id="profile-class"></span></p>
+            <p><strong>Term:</strong> <span id="profile-term"></span></p>
+            <button onclick="showSection('report-section')">View Report Card</button>
+        </div>
+
+        <!-- Report Card Section -->
+        <div class="box" id="report-section" style="display: none;">
+            <h3 class="section-title">Report Card</h3>
+            <p>Report card details will be displayed here.</p>
+            <button onclick="showSection('profile-section')">Back to Profile</button>
+        </div>
 
     </div>
 
@@ -118,8 +173,16 @@
                 term: document.getElementById("term").value,
                 password: document.getElementById("reg-password").value
             };
-            alert("Registration successful!");
+            alert("Registration successful. Proceed to login.");
             showSection("login-section");
+        }
+
+        function displayProfile() {
+            document.getElementById("profile-name").textContent = studentProfile.name;
+            document.getElementById("profile-student-id").textContent = studentProfile.studentId;
+            document.getElementById("profile-school").textContent = studentProfile.school;
+            document.getElementById("profile-class").textContent = studentProfile.class;
+            document.getElementById("profile-term").textContent = studentProfile.term;
         }
     </script>
 </body>
