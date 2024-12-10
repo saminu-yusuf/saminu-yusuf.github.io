@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Attendance Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Digital Attendance Register</h1>
+        <table id="attendanceTable">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Gender</th>
+                    <th colspan="2">Monday</th>
+                    <th colspan="2">Tuesday</th>
+                    <th colspan="2">Wednesday</th>
+                    <th colspan="2">Thursday</th>
+                    <th colspan="2">Friday</th>
+                    <th>Weekly Total</th>
+                    <th>Percentage (%)</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Morning</th>
+                    <th>Afternoon</th>
+                    <th>Morning</th>
+                    <th>Afternoon</th>
+                    <th>Morning</th>
+                    <th>Afternoon</th>
+                    <th>Morning</th>
+                    <th>Afternoon</th>
+                    <th>Morning</th>
+                    <th>Afternoon</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John Doe</td>
+                    <td>Male</td>
+                    <td class="cell" onclick="markAttendance(this)"></td>
+                    <td class="cell" onclick="markAttendance(this)"></td>
+                    <td class="cell" onclick="markAttendance(this)"></td>
+                    <td class="cell" onclick="markAttendance(this)"></td>
+                    <td class="cell" onclick="markAttendance(this)"></td>
+                    <td class="cell" onclick="markAttendance(this)"></td>
+                    <td class="cell" onclick="markAttendance(this)"></td>
+                    <td class="cell" onclick="markAttendance(this)"></td>
+                    <td class="cell" onclick="markAttendance(this)"></td>
+                    <td class="cell" onclick="markAttendance(this)"></td>
+                    <td class="total">0</td>
+                    <td class="percentage">0%</td>
+                </tr>
+                <!-- Add more student rows as needed -->
+            </tbody>
+        </table>
+        <button onclick="calculateTotals()">Calculate Weekly Totals</button>
+        <div id="analysis"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
