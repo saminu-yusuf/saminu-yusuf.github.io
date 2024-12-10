@@ -3,65 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Attendance Register</title>
+    <title>Student Attendance Register</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container">
-        <h1>Digital Attendance Register</h1>
+<body class="light">
+    <div id="customizationPanel">
+        <h3>Customize Attendance Register</h3>
+        <label for="theme">Theme:</label>
+        <select id="theme">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="classic">Classic</option>
+        </select>
+        <label for="fontSize">Font Size:</label>
+        <input type="number" id="fontSize" min="10" max="24" value="16">
+        <button id="applyCustomization">Apply</button>
+    </div>
+
+    <div id="navigation">
+        <button id="goToRegister">Go to Registration</button>
+        <button id="goToAttendance">Go to Attendance</button>
+    </div>
+
+    <div id="registrationPage">
+        <form id="studentForm">
+            <h3>New Student Registration</h3>
+            <input type="text" id="fullName" placeholder="Full Name" required>
+            <input type="text" id="serialNumber" placeholder="Serial Number" required>
+            <input type="text" id="admissionNumber" placeholder="Admission Number" required>
+            <input type="number" id="age" placeholder="Age" required>
+            <input type="text" id="placeOfBirth" placeholder="Place of Birth" required>
+            <input type="text" id="tribe" placeholder="Tribe" required>
+            <input type="file" id="studentImage" accept="image/*" required>
+            <button type="submit">Add Student</button>
+        </form>
+    </div>
+
+    <div id="attendancePage" class="hidden">
+        <h3>Attendance Register</h3>
         <table id="attendanceTable">
             <thead>
                 <tr>
-                    <th>Student Name</th>
-                    <th>Gender</th>
-                    <th colspan="2">Monday</th>
-                    <th colspan="2">Tuesday</th>
-                    <th colspan="2">Wednesday</th>
-                    <th colspan="2">Thursday</th>
-                    <th colspan="2">Friday</th>
-                    <th>Weekly Total</th>
-                    <th>Percentage (%)</th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <th></th>
+                    <th>Full Name</th>
                     <th>Morning</th>
                     <th>Afternoon</th>
-                    <th>Morning</th>
-                    <th>Afternoon</th>
-                    <th>Morning</th>
-                    <th>Afternoon</th>
-                    <th>Morning</th>
-                    <th>Afternoon</th>
-                    <th>Morning</th>
-                    <th>Afternoon</th>
-                    <th></th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>John Doe</td>
-                    <td>Male</td>
-                    <td class="cell" onclick="markAttendance(this)"></td>
-                    <td class="cell" onclick="markAttendance(this)"></td>
-                    <td class="cell" onclick="markAttendance(this)"></td>
-                    <td class="cell" onclick="markAttendance(this)"></td>
-                    <td class="cell" onclick="markAttendance(this)"></td>
-                    <td class="cell" onclick="markAttendance(this)"></td>
-                    <td class="cell" onclick="markAttendance(this)"></td>
-                    <td class="cell" onclick="markAttendance(this)"></td>
-                    <td class="cell" onclick="markAttendance(this)"></td>
-                    <td class="cell" onclick="markAttendance(this)"></td>
-                    <td class="total">0</td>
-                    <td class="percentage">0%</td>
-                </tr>
-                <!-- Add more student rows as needed -->
+                <!-- Dynamic rows will be added here -->
             </tbody>
         </table>
-        <button onclick="calculateTotals()">Calculate Weekly Totals</button>
-        <div id="analysis"></div>
+        <div id="summary">
+            <p id="totalAttendance"></p>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
