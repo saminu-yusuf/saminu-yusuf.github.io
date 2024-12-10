@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+}
+
+.cell {
+    cursor: pointer;
+    background: #e7f7ff;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.cell:hover {
+    background: #c6e4ff;
+    transform: scale(1.1);
+}
+
+.total, .percentage {
+    font-weight: bold;
+    background: #f0f8e8;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+#analysis {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+}
