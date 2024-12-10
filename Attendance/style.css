@@ -1,73 +1,76 @@
+/* General Styling */
 body {
     font-family: Arial, sans-serif;
-    background: #f0f0f0;
     margin: 0;
+    padding: 0;
+}
+
+/* Customization Panel */
+#customizationPanel {
     padding: 20px;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ddd;
 }
 
-.container {
-    max-width: 1000px;
-    margin: auto;
-    background: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+#customizationPanel select, 
+#customizationPanel input, 
+#customizationPanel button {
+    margin: 5px;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    text-align: center;
+/* 3D Form */
+form input, form button {
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+    transition: all 0.3s ease;
     padding: 10px;
+    font-size: 16px;
+    margin: 5px;
 }
 
-.cell {
-    cursor: pointer;
-    background: #e7f7ff;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.cell:hover {
-    background: #c6e4ff;
-    transform: scale(1.1);
-}
-
-.total, .percentage {
-    font-weight: bold;
-    background: #f0f8e8;
+form input:focus, form button:hover {
+    box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
 }
 
 button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
     cursor: pointer;
-    font-size: 16px;
+    padding: 10px 20px;
+    font-weight: bold;
 }
 
-button:hover {
-    background: #0056b3;
+/* Hidden Elements */
+.hidden {
+    display: none;
 }
 
-#analysis {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #333;
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Themes */
+body.light {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.dark {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.classic {
+    background-color: #f5f5dc;
+    color: #000000;
 }
