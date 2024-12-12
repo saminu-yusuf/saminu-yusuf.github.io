@@ -1,52 +1,80 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Navigation Bar -->
+    <nav>
+      <button onclick="navigateTo('welcome')">Welcome</button>
+      <button onclick="navigateTo('home')">Home</button>
+      <button onclick="navigateTo('analysis')">Analysis</button>
+      <button onclick="navigateTo('results')">Results</button>
+      <button onclick="navigateTo('settings')">Settings</button>
+      <button onclick="navigateTo('export')">Export</button>
+    </nav>
 
-nav {
-  background-color: #0078D7;
-  padding: 10px;
-}
+    <!-- Screens -->
+    <div id="screens">
+      <!-- Welcome Screen -->
+      <section id="welcome" class="screen visible">
+        <h1>Welcome Screen</h1>
+        <p>Welcome to the Sweet Potato Analyzer! This app helps you measure and compare sweet potatoes accurately.</p>
+        <img src="placeholder-logo.png" alt="App Logo" class="image">
+      </section>
 
-nav button {
-  margin: 5px;
-  padding: 10px 20px;
-  border: none;
-  color: white;
-  background-color: #005BB5;
-  cursor: pointer;
-  border-radius: 5px;
-}
+      <!-- Home Screen -->
+      <section id="home" class="screen">
+        <h1>Home Screen</h1>
+        <p>Choose an option below to get started:</p>
+        <button onclick="navigateTo('analysis')">Start Analysis</button>
+        <button onclick="navigateTo('settings')">Go to Settings</button>
+      </section>
 
-nav button:hover {
-  background-color: #003D80;
-}
+      <!-- Analysis Screen -->
+      <section id="analysis" class="screen">
+        <h1>Analysis Screen</h1>
+        <p>Use the camera to analyze sweet potatoes. Place the sweet potatoes in view of the camera for size comparison.</p>
+        <div class="camera-view">Camera View Placeholder</div>
+        <button onclick="navigateTo('results')">View Results</button>
+      </section>
 
-.screen {
-  display: none;
-  margin: 50px auto;
-  padding: 20px;
-  border: 2px solid #0078D7;
-  border-radius: 10px;
-  width: 80%;
-}
+      <!-- Results Screen -->
+      <section id="results" class="screen">
+        <h1>Results Screen</h1>
+        <p>The analysis is complete. Here are the results:</p>
+        <ul>
+          <li>Largest Sweet Potato: 15 cm</li>
+          <li>Smallest Sweet Potato: 8 cm</li>
+          <li>Average Size: 11.5 cm</li>
+        </ul>
+        <button onclick="navigateTo('export')">Export Results</button>
+      </section>
 
-.screen h1 {
-  font-size: 2em;
-  color: #0078D7;
-}
+      <!-- Settings Screen -->
+      <section id="settings" class="screen">
+        <h1>Settings Screen</h1>
+        <p>Adjust the app settings below:</p>
+        <ul>
+          <li><input type="checkbox" id="grid-overlay"> Enable Grid Overlay</li>
+          <li><input type="checkbox" id="brightness-adjust"> Auto Brightness Adjustment</li>
+        </ul>
+      </section>
 
-.screen p {
-  font-size: 1.2em;
-  color: #555;
-}
+      <!-- Export Screen -->
+      <section id="export" class="screen">
+        <h1>Export/Save Screen</h1>
+        <p>Export or save your analysis data:</p>
+        <button>Download Results</button>
+        <button>Share via Email</button>
+      </section>
+    </div>
+  </div>
 
-.hidden {
-  display: none;
-}
-
-.visible {
-  display: block;
-}
+  <script src="script.js"></script>
+</body>
+</html>
