@@ -1,0 +1,52 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav {
+  background-color: #0078D7;
+  padding: 10px;
+}
+
+nav button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  background-color: #005BB5;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+nav button:hover {
+  background-color: #003D80;
+}
+
+.screen {
+  display: none;
+  margin: 50px auto;
+  padding: 20px;
+  border: 2px solid #0078D7;
+  border-radius: 10px;
+  width: 80%;
+}
+
+.screen h1 {
+  font-size: 2em;
+  color: #0078D7;
+}
+
+.screen p {
+  font-size: 1.2em;
+  color: #555;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
