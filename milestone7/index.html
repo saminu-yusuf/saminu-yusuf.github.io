@@ -20,34 +20,57 @@
 
     <!-- Screens -->
     <div id="screens">
-      <section id="welcome" class="screen">
+      <!-- Welcome Screen -->
+      <section id="welcome" class="screen visible">
         <h1>Welcome Screen</h1>
-        <p>App logo and a brief description go here.</p>
+        <p>Welcome to the Sweet Potato Analyzer! This app helps you measure and compare sweet potatoes accurately.</p>
+        <img src="placeholder-logo.png" alt="App Logo" class="image">
       </section>
 
-      <section id="home" class="screen hidden">
+      <!-- Home Screen -->
+      <section id="home" class="screen">
         <h1>Home Screen</h1>
-        <p>Access the camera and navigate to other features.</p>
+        <p>Choose an option below to get started:</p>
+        <button onclick="navigateTo('analysis')">Start Analysis</button>
+        <button onclick="navigateTo('settings')">Go to Settings</button>
       </section>
 
-      <section id="analysis" class="screen hidden">
+      <!-- Analysis Screen -->
+      <section id="analysis" class="screen">
         <h1>Analysis Screen</h1>
-        <p>Camera view with size reference overlay.</p>
+        <p>Use the camera to analyze sweet potatoes. Place the sweet potatoes in view of the camera for size comparison.</p>
+        <div class="camera-view">Camera View Placeholder</div>
+        <button onclick="navigateTo('results')">View Results</button>
       </section>
 
-      <section id="results" class="screen hidden">
+      <!-- Results Screen -->
+      <section id="results" class="screen">
         <h1>Results Screen</h1>
-        <p>Display visual comparison and measurements here.</p>
+        <p>The analysis is complete. Here are the results:</p>
+        <ul>
+          <li>Largest Sweet Potato: 15 cm</li>
+          <li>Smallest Sweet Potato: 8 cm</li>
+          <li>Average Size: 11.5 cm</li>
+        </ul>
+        <button onclick="navigateTo('export')">Export Results</button>
       </section>
 
-      <section id="settings" class="screen hidden">
+      <!-- Settings Screen -->
+      <section id="settings" class="screen">
         <h1>Settings Screen</h1>
-        <p>Adjust grid overlay, brightness, and other features.</p>
+        <p>Adjust the app settings below:</p>
+        <ul>
+          <li><input type="checkbox" id="grid-overlay"> Enable Grid Overlay</li>
+          <li><input type="checkbox" id="brightness-adjust"> Auto Brightness Adjustment</li>
+        </ul>
       </section>
 
-      <section id="export" class="screen hidden">
+      <!-- Export Screen -->
+      <section id="export" class="screen">
         <h1>Export/Save Screen</h1>
-        <p>Options to save or share the data.</p>
+        <p>Export or save your analysis data:</p>
+        <button>Download Results</button>
+        <button>Share via Email</button>
       </section>
     </div>
   </div>
