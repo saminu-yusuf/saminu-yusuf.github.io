@@ -76,3 +76,52 @@ nav button:hover {
 .visible {
   display: block;
 }
+
+
+
+.app-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.potato-icon {
+    width: 100px;
+    height: 60px;
+    background: linear-gradient(45deg, orange, darkorange);
+    border-radius: 50px;
+    position: relative;
+}
+
+.potato-icon::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: green;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    left: 40px;
+}
+
+.potato-icon::after {
+    content: '';
+    width: 10px;
+    height: 40px;
+    background: green;
+    border-radius: 5px;
+    position: absolute;
+    top: -30px;
+    left: 45px;
+}
+
+.app-logo h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    color: #333;
+    margin-top: 10px;
+}
+
+
+
