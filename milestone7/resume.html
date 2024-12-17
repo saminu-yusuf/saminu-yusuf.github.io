@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saminu Yusuf Garba - Professional Bio</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Container styling */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        /* Header styling */
+        header {
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        header p {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        /* Profile image styling */
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #2980b9;
+            margin: 10px auto;
+        }
+
+        /* Section styling */
+        section {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            border-bottom: 2px solid #2980b9;
+            color: #2980b9;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        section p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+
+        /* Download button styling */
+        .btn-download {
+            display: inline-block;
+            background-color: #2980b9;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .btn-download:hover {
+            background-color: #1c5985;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Profile Picture -->
+        <img src="https://via.placeholder.com/150" alt="Profile Image" class="profile-image">
+        <!-- Header Section -->
+        <header>
+            <h1>Saminu Yusuf Garba</h1>
+            <p>Educator | Technical Professional | Innovator</p>
+        </header>
+        <!-- Bio Section -->
+        <section>
+            <h2>Professional Bio</h2>
+            <p>
+                Saminu Yusuf Garba is a skilled educator and technical professional with a passion for bridging the gap between education and technology. 
+                With years of teaching experience across multiple private schools, Saminu has honed his classroom management and lesson planning skills, 
+                empowering students to achieve academic success and personal growth.
+            </p>
+            <p>
+                In addition to his teaching experience, Saminu is certified in cutting-edge technical disciplines, including UI/UX design, web development 
+                (PHP and MySQL), and computer maintenance. He is a graduate of the Federal College of Education (Technical), Gombe State, where he earned his 
+                NCE in Automobile Technology Education, equipping him with hands-on technical expertise and problem-solving abilities.
+            </p>
+            <p>
+                Saminu’s unique combination of technical skills and educational experience positions him as a versatile professional capable of driving 
+                innovation and delivering impactful results. He is committed to contributing his expertise to organizations focused on education, technology, 
+                and development.
+            </p>
+        </section>
+        <!-- Contact Section -->
+        <section>
+            <h2>Contact</h2>
+            <p><strong>LinkedIn:</strong> <a href="#" target="_blank">Connect with Saminu</a></p>
+        </section>
+        <!-- Download Resume Button -->
+        <div>
+            <a href="#" id="download" class="btn-download">Download Resume</a>
+        </div>
+    </div>
+
+    <!-- JavaScript to enable the "Download Resume" functionality -->
+    <script>
+        document.getElementById('download').addEventListener('click', function() {
+            const resumeContent = `
+            Professional Bio: Saminu Yusuf Garba
+
+            Saminu Yusuf Garba is a skilled educator and technical professional with a passion for bridging the gap between education and technology. 
+            With years of teaching experience across multiple private schools, Saminu has honed his classroom management and lesson planning skills, 
+            empowering students to achieve academic success and personal growth.
+
+            In addition to his teaching experience, Saminu is certified in cutting-edge technical disciplines, including UI/UX design, web development 
+            (PHP and MySQL), and computer maintenance. He is a graduate of the Federal College of Education (Technical), Gombe State, where he earned his 
+            NCE in Automobile Technology Education, equipping him with hands-on technical expertise and problem-solving abilities.
+
+            Saminu’s unique combination of technical skills and educational experience positions him as a versatile professional capable of driving 
+            innovation and delivering impactful results. He is committed to contributing his expertise to organizations focused on education, technology, 
+            and development.
+
+            Connect with Saminu on LinkedIn to learn more about his work and explore opportunities for collaboration.
+            `;
+
+            const blob = new Blob([resumeContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Saminu_Yusuf_Garba_Resume.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+    </script>
+</body>
+</html>
