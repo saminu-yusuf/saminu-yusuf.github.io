@@ -1,10 +1,11 @@
 const screen = document.getElementById('screen');
 const history = document.getElementById('history');
+const autoAddMode = document.getElementById('autoAddMode');
 
 let total = 0;
 let currentInput = '';
-let awaitingAutoAdd = false;
 let justEvaluated = false;
+let autoAddLength = Number(autoAddMode ? autoAddMode.value : 2);
 
 function render() {
   if (currentInput === '') {
@@ -24,7 +25,6 @@ function addCurrentValue() {
 
   total += Number(currentInput);
   currentInput = '';
-  awaitingAutoAdd = true;
   justEvaluated = false;
   render();
 }
@@ -32,7 +32,6 @@ function addCurrentValue() {
 function clearAll() {
   total = 0;
   currentInput = '';
-  awaitingAutoAdd = false;
   justEvaluated = false;
   render();
 }
@@ -50,7 +49,6 @@ function finishCalculation() {
     currentInput = '';
   }
 
-  awaitingAutoAdd = false;
   justEvaluated = true;
   render();
 }
@@ -59,17 +57,15 @@ function handleDigit(value) {
   if (justEvaluated) {
     total = 0;
     currentInput = '';
-    awaitingAutoAdd = false;
     justEvaluated = false;
   }
 
-  if (awaitingAutoAdd && currentInput !== '') {
+  currentInput += value;
+  render();
+
+  if (currentInput.length >= autoAddLength) {
     addCurrentValue();
   }
-
-  currentInput += value;
-  awaitingAutoAdd = true;
-  render();
 }
 
 function handleAction(action) {
@@ -108,6 +104,16 @@ actionButtons.forEach((button) => {
     handleAction(action);
   });
 });
+
+if (autoAddMode) {
+  autoAddMode.addEventListener('change', () => {
+    autoAddLength = Number(autoAddMode.value);
+
+    if (currentInput.length >= autoAddLength && currentInput !== '') {
+      addCurrentValue();
+    }
+  });
+}
 
 document.addEventListener('keydown', (event) => {
   const key = event.key;
